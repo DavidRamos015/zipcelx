@@ -46,6 +46,65 @@ Fork : https://github.com/egeriis/zipcelx
         typescript :
         create a desc.d.ts file in your project root folder and add this line :
         declare module "zipcelx-on-steroids"
+
+```typescript
+import zipcelx from 'zipcelx-on-steroids';
+import download from 'downloadjs';
+
+export type ExportColumn = {
+    fieldName: string,
+    format: string,
+    value: string;
+    type: string;
+}
+
+export function exportTo(filename: string, columns: ExportColumn[], data: any[], target: 'export' | 'blob') {
+    GenerateFileStructure(filename, columns, data, target);
+}
+
+export function generateFileStructure(filename: string, columns: ExportColumn[], data: any[], target: 'export' | 'blob'): any {
+
+    let info: Array<Array<any>> = [ [] ];
+
+    columns.forEach((col: ExportColumn) => {
+        info[ 0 ].push({ value: col.value, type: col.type });
+    });
+
+    data.forEach((item) => {
+        let index = info.push([]);
+        for (let [ , value ] of Object.entries(item)) {
+            info[ index - 1 ].push({ value: value ? value : '', type: 'string' });
+        }
+    });
+
+    const config =
+    {
+        filename: filename,
+        sheet: {
+            data: info,
+        }
+    };
+
+    return zipcelx(config, target);
+}
+
+export function downloadFile(fileName: string, zipcelFile: any) {
+    try {
+        if (zipcelFile) {
+            var x = new XMLHttpRequest();
+            x.open("GET", `/${fileName}`, true);
+            x.responseType = "blob";
+            x.onload = function (e) {
+                download(zipcelFile, fileName, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            };
+            x.send();
+        };
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+```
           
 ## Issues
 Should it happen that the tool broke down on you please head to our [Issue tracker](https://github.com/davidramos-om/zipcelx-on-steroids/issues)

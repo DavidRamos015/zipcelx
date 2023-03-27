@@ -43,10 +43,22 @@ Fork : https://github.com/egeriis/zipcelx
         zipcelx(config, 'blob') to return a blob oject
 
 
-        typescript :
-        create a desc.d.ts file in your project root folder and add this line :
-        declare module "zipcelx-on-steroids"
+TypeScript: @types/zipcelx-on-steroids
+```typescript
+  declare module "zipcelx-on-steroids" {
 
+    export interface IConfig {
+        filename: string;
+        sheet: {
+            data: any[][];
+        };
+    }
+
+    export default function zipcelx(config: IConfig, target: 'export' | 'blob'): any;
+}
+```
+
+## Example
 ```typescript
 import zipcelx from 'zipcelx-on-steroids';
 import download from 'downloadjs';
@@ -59,7 +71,7 @@ export type ExportColumn = {
 }
 
 export function exportTo(filename: string, columns: ExportColumn[], data: any[], target: 'export' | 'blob') {
-    GenerateFileStructure(filename, columns, data, target);
+    generateFileStructure(filename, columns, data, target);
 }
 
 export function generateFileStructure(filename: string, columns: ExportColumn[], data: any[], target: 'export' | 'blob'): any {

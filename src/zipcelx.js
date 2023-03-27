@@ -40,7 +40,6 @@ export default (config, action) => {
     '_rels/.rels': strToU8(rels),
     '[Content_Types].xml': strToU8(contentTypes),
   };
-
   return new Promise((resolve, reject) => {
     zip(
       zipContent,

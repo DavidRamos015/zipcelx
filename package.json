@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:DavidRamos015/zipcelx-on-steroids.git"
+    "url": "git+ssh://git@github.com:davidramos-om/zipcelx-on-steroids.git"
   },
   "keywords": [
     "JSON",
@@ -31,9 +31,9 @@
   "author": "Lars Krieger",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DavidRamos015/zipcelx-on-steroids/issues"
+    "url": "https://github.com/davidramos-om/zipcelx-on-steroids/issues"
   },
-  "homepage": "https://github.com/DavidRamos015/zipcelx-on-steroids/#readme",
+  "homepage": "https://github.com/davidramos-om/zipcelx-on-steroids/#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
@@ -52,8 +52,8 @@
     "rollup-plugin-uglify": "^3.0.0"
   },
   "dependencies": {
+    "fflate": "^0.7.4",
     "file-saver": "^2.0.0",
-    "jszip": "^3.1.3",
     "lodash.escape": "^4.0.1"
   }
 }

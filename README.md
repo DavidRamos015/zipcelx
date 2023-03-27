@@ -43,7 +43,11 @@ Fork : https://github.com/egeriis/zipcelx
         zipcelx(config, 'blob') to return a blob oject
 
 
+        typescript :
+        create a desc.d.ts file in your project root folder and add this line :
+        declare module "zipcelx-on-steroids"
+          
 ## Issues
-Should it happen that the tool broke down on you please head to our [Issue tracker](https://github.com/DavidRamos015/zipcelx-on-steroids/issues)
+Should it happen that the tool broke down on you please head to our [Issue tracker](https://github.com/davidramos-om/zipcelx-on-steroids/issues)
 1. Search if the issue is already discussed or explained.
 2. If no luck feel free to open a new issue and we will get back to you as soon as possible.
